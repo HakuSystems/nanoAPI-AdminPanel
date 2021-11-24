@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,7 +60,8 @@ namespace nanoAPIAdminPanel.Auth
             var response = await nanoHttpclient.GetAsync(url); //Request headers must contain only ASCII characters. Err
             try
             {
-                nanoHttpclient.DefaultRequestHeaders.Add("Auth-Key", value: (string?)key.GetValue("Auth-Key"));
+                var AuthKey = (string?)key.GetValue("Auth-Key");
+                nanoHttpclient.DefaultRequestHeaders.Add("Auth-Key", HttpUtility.HtmlEncode(AuthKey));
             }
             catch (NullReferenceException)
             {
