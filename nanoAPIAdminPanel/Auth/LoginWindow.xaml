@@ -9,11 +9,58 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
+        Background="#212121"
+        Foreground="#ffffff"
+        MinHeight="350"
+        MinWidth="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        Loaded="Window_Loaded"
         
-        Title="LoginWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <TextBlock>wpf</TextBlock>
-        </StackPanel>
-    </Grid>
+        Title="Login" Height="350" Width="600">
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="8">
+                <TextBlock Foreground="#484848" Margin="5" Text="Please login with Admin Account."/>
+                <TextBlock Margin="10,0,0,0" Text="Register in unity if u dont have an account.."/>
+                <TextBlock Foreground="#484848" Text="Username or Email"/>
+                <TextBox x:Name="UserOrEmailInput" Margin="5"/>
+                <TextBlock Foreground="#484848" Text="Password"/>
+                <PasswordBox x:Name="PasswordInput" Margin="5"/>
+                <Button x:Name="LoginBtn" Content="Login" Click="LoginBtn_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="10" Grid.RowSpan="10" Grid.ColumnSpan="3">
+                <TextBlock Foreground="#484848" Text="Server Response"/>
+                <TextBlock x:Name="ServerResponseTxt" Margin="1" Text="Server health Check"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
