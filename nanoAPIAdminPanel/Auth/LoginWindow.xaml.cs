@@ -56,11 +56,9 @@ namespace nanoAPIAdminPanel.Auth
                 PasswordInput.Password = (string?)key.GetValue("Password");
             }
 
-            var response = await nanoHttpclient.GetAsync(url);
+            var response = await nanoHttpclient.GetAsync(url); //Request headers must contain only ASCII characters. Err
             try
             {
-                //nanoHttpclient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64;" +
-                  //  "rv:57.0) Gecko/20100101 Firefox/57.0");
                 nanoHttpclient.DefaultRequestHeaders.Add("Auth-Key", value: (string?)key.GetValue("Auth-Key"));
             }
             catch (NullReferenceException)
