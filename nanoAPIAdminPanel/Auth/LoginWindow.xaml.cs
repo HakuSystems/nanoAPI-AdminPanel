@@ -57,7 +57,7 @@ namespace nanoAPIAdminPanel.Auth
                 PasswordInput.Password = (string?)key.GetValue("Password");
             }
 
-            var response = await nanoHttpclient.GetAsync(url); //Request headers must contain only ASCII characters. Err
+            var response = await nanoHttpclient.GetAsync(url);
             try
             {
                 var AuthKey = (string?)key.GetValue("Auth-Key");
@@ -79,7 +79,10 @@ namespace nanoAPIAdminPanel.Auth
             {
                 if (properties.Permission == 10)
                 {
-                    //open new window
+                    Main.MainWindow window = new Main.MainWindow();
+                    window.InitializeComponent();
+                    window.Show();
+                    Close();
                 }
                 else
                 {
@@ -141,8 +144,10 @@ namespace nanoAPIAdminPanel.Auth
                 key.SetValue("Password", PasswordInput.Password);
                 key.SetValue("Auth-Key", loginProperties.Data.AuthKey);
                 key.Close();
+                Main.MainWindow window = new Main.MainWindow();
+                window.InitializeComponent();
+                window.Show();
                 Close();
-                //open new window
 
             }
             else
