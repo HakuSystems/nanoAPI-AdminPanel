@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nanoAPIAdminPanel", "nanoAPIAdminPanel\nanoAPIAdminPanel.csproj", "{FCD6BCA9-FA3D-4509-B6A6-72E4C59EB246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nanoAPIAdminPanel", "nanoAPIAdminPanel\nanoAPIAdminPanel.csproj", "{FCD6BCA9-FA3D-4509-B6A6-72E4C59EB246}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
