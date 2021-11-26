@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -26,7 +28,6 @@ namespace nanoAPIAdminPanel.Auth
     {
         //readonly httpclient
         public static readonly HttpClient nanoHttpclient = new HttpClient(new HttpClientHandler { UseCookies = false });
-
         public LoginWindow()
         {
             InitializeComponent();
@@ -102,9 +103,9 @@ namespace nanoAPIAdminPanel.Auth
             var response = await nanoHttpclient.GetAsync(url);
 
             NanoLog("Getting Auth-Key data From Registry", ConsoleColor.White);
-                var AuthKey = (string?)key.GetValue("Auth-Key");
-            NanoLog("Setting Auth-Key as Cookie", ConsoleColor.Yellow);
-                nanoHttpclient.DefaultRequestHeaders.Add("Auth-Key", HttpUtility.HtmlEncode(AuthKey));
+            var AuthKey = (string?)key.GetValue("Auth-Key");
+            NanoLog("Sending Auth-Key as Cookie", ConsoleColor.Yellow);
+            nanoHttpclient.DefaultRequestHeaders.TryAddWithoutValidation("Auth-Key", HttpUtility.HtmlEncode(AuthKey));
 
             NanoLog("Getting Self URL Content", ConsoleColor.White);
             string result = await response.Content.ReadAsStringAsync();
@@ -115,7 +116,7 @@ namespace nanoAPIAdminPanel.Auth
             NanoLog("Checking if Username is null", ConsoleColor.White);
             if (string.IsNullOrEmpty(properties.Username))
             {
-                NanoLog("Username is null.", ConsoleColor.Red);
+                NanoLog("(server)Username is null.", ConsoleColor.Red);
                 NanoLog("Checking ServerHealth", ConsoleColor.White);
                 GetHealthCheckAsync("https://api.nanosdk.net/health");
                 NanoLog("Getting Registry Data", ConsoleColor.Yellow);
@@ -146,7 +147,9 @@ namespace nanoAPIAdminPanel.Auth
                     RequestRegistryData();
                 }
             }
+
         }
+
 
         private void RequestRegistryData()
         {
