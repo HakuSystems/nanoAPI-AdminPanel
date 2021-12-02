@@ -16,6 +16,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         Loaded="Window_Loaded"
+        GotFocus="Window_GotFocus"
         
         Title="Login" Height="350" Width="600">
     <Border>
@@ -59,7 +60,7 @@
             </StackPanel>
             <StackPanel Grid.Row="10" Grid.RowSpan="10" Grid.ColumnSpan="3">
                 <TextBlock Foreground="#484848" Text="Server Response"/>
-                <TextBlock x:Name="ServerResponseTxt" Margin="1" Text="Server health Check"/>
+                <TextBlock x:Name="ServerResponseTxt" Margin="1"/>
             </StackPanel>
         </Grid>
     </Border>

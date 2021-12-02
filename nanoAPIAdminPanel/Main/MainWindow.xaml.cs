@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Auth.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace nanoAPIAdminPanel.Main
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UtilsManager.Logout();
+            Close();
         }
     }
 }
